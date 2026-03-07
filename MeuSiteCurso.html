@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso: Do Zero ao Sonho</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b132b; 
+            --text-light: #ffffff;
+            --accent-color: #00ff88; 
+            --card-bg: #1c2541;
+            --price-color: #f1c40f; /* Amarelo ouro para destacar o preço */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        .mobile-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px 0 30px;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ffffff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #a0aab2;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        /* Container da Imagem Responsiva com Efeito Glow */
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 280px; /* Tamanho ideal para não ocupar a tela toda no mobile */
+            margin: 0 auto 30px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Brilho de fundo para destacar você */
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* Sombra projetada direto na sua foto sem fundo */
+            filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.6));
+            border-bottom: 2px solid var(--accent-color); /* Uma linha de destaque na base */
+            border-radius: 0 0 20px 20px;
+        }
+
+        /*.image-placeholder {
+            width: 100%;
+            height: 280px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            color: #556270;
+            font-style: italic;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }*/
+
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Botões Pulsantes */
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 18px 10px;
+            background-color: var(--accent-color);
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 900;
+            font-size: 1.3rem;
+            border-radius: 8px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+            animation: pulse 1.5s infinite;
+            margin-top: 10px;
+        }
+
+        .cta-subtext {
+            display: block;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #a0aab2;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(0, 255, 136, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 0 25px rgba(0, 255, 136, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(0, 255, 136, 0.4); }
+        }
+
+        /* Seção de Módulos */
+        .modules {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            font-weight: 800;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #d1d8e0;
+            line-height: 1.4;
+        }
+
+        /* Seção de Preço */
+        .price-section {
+            background: linear-gradient(135deg, var(--card-bg), #0b132b);
+            padding: 40px 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+            border: 1px solid rgba(241, 196, 15, 0.3);
+        }
+
+        .price-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .price-value {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--price-color);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(241, 196, 15, 0.2);
+        }
+
+        .price-value span {
+            font-size: 1.5rem;
+        }
+
+        /* Seção do Autor */
+        .author {
+            margin-top: 50px;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        .author-badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .author h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .author p {
+            color: #a0aab2;
+            line-height: 1.5;
+            font-size: 1.05rem;
+        }
+
+        .footer-cta {
+            margin: 40px 0 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        
+        <section class="hero" data-aos="fade-down">
+            <h1>Chega de apagar incêndios financeiros.</h1>
+            <p>O <strong>Do Zero ao Sonho</strong> é o mapa definitivo, em 6 módulos de vídeo-aulas, para você organizar sua vida, sair das dívidas e ver seu dinheiro render de verdade. Sem economês chato, apenas a realidade nua e crua do mercado.</p>
+            
+            <!--<div class="image-placeholder">
+                [Sua foto aqui: Expressão confiante, gravando ou olhando para a câmera]
+            </div>-->
+
+            <div class="hero-image-container">
+                <img src="perfil-patrick.png.png" alt="Especialista CEA" class="profile-img">
+            </div>
+
+            
+            <a href="https://pay.hotmart.com/E104233074K?off=ip6a5ikh" class="cta-button">Quero Multiplicar Meu Dinheiro</a>
+            <span class="cta-subtext">Acesso imediato a todas as vídeo-aulas.</span>
+        </section>
+
+        <section class="modules">
+            <h2 class="section-title" data-aos="zoom-in">O que você vai dominar na prática:</h2>
+            
+            <div class="card" data-aos="fade-right">
+                <h3>Módulo 1: O Raio-X Financeiro</h3>
+                <p>O ponto de partida. Como mapear seu cenário atual, estancar os sangramentos e preparar o terreno para o crescimento.</p>
+            </div>
+
+            <div class="card" data-aos="fade-left">
+                <h3>Módulo 2: A Blindagem</h3>
+                <p>Construindo sua reserva de emergência com inteligência e dominando a dinâmica da taxa Selic de forma simples.</p>
+            </div>
+
+            <div class="card" data-aos="fade-right">
+                <h3>Módulos 3 ao 6: A Máquina de Fazer Dinheiro</h3>
+                <p>Imersão completa no que interessa: CDBs, LCI/LCA, Debêntures e estratégias sólidas para o longo prazo (filosofia Barsi na prática).</p>
+            </div>
+        </section>
+
+        <!--<section class="price-section" data-aos="flip-up">
+            <h2>Tudo isso por um valor ridículo:</h2>
+            <p style="color: #a0aab2; text-decoration: line-through;">De R$ 297,00</p>
+            <div class="price-value"><span>R$</span> 97<span>,00</span></div>
+            <p style="margin-bottom: 20px;">Pagamento único. Acesso total.</p>
+            <a href="#checkout" class="cta-button">Garantir Minha Vaga Agora</a>
+            <span class="cta-subtext">Ambiente de pagamento 100% seguro.</span>
+        </section> -->
+
+        <section class="price-section" data-aos="flip-up">
+            <h2>Tudo isso por um valor ridículo:</h2>
+            <p style="color: #a0aab2; font-size: 1.1rem; margin-bottom: 5px;">Por apenas</p>
+            
+            <div class="price-value"><span>12x de R$</span> 10<span>,03</span></div>
+            
+            <p style="margin-bottom: 20px; color: #a0aab2;">Ou R$ 97,00 à vista. Acesso vitalício.</p>
+            
+            <a href="https://pay.hotmart.com/E104233074K?off=ip6a5ikh" class="cta-button">Garantir Minha Vaga Agora</a>
+            <span class="cta-subtext">Ambiente de pagamento 100% seguro.</span>
+        </section>
+
+        <section class="author" data-aos="fade-up">
+            <span class="author-badge">Especialista CEA</span>
+            <h2>Quem é o Patrick?</h2>
+            <p>Sou certificado pela ANBIMA (CEA) e atuo diariamente no mercado financeiro. Criei o <strong>Do Zero ao Sonho</strong> porque cansei de ver teorias mirabolantes na internet. Aqui o foco é 100% no que funciona. Vou te pegar pela mão e te mostrar exatamente como estruturar sua vida financeira, da organização aos investimentos mais seguros e rentáveis.</p>
+        </section>
+
+        <!--<section class="footer-cta" id="checkout" data-aos="zoom-in-up">
+            <a href="SEU_LINK_DO_CHECKOUT_AQUI" class="cta-button">Comprar por R$ 97,00</a>
+            <span class="cta-subtext">Seu acesso chega no e-mail em menos de 1 minuto.</span>
+        </section> -->
+
+        <section class="footer-cta" id="checkout" data-aos="zoom-in-up">
+            <a href="https://pay.hotmart.com/E104233074K?off=ip6a5ikh" class="cta-button">COMPRAR POR 12x DE R$ 10,03</a>
+            
+            <span class="cta-subtext">Ou R$ 97,00 à vista. Acesso liberado no e-mail em 1 minuto.</span>
+        </section>
+
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, 
+            once: false, 
+            offset: 100 
+        });
+    </script>
+</body>
+</html>
